@@ -1,0 +1,121 @@
+/* Basic style and sizing */
+*{
+  margin:0;
+  padding: 0;
+  font-family: 'Nunito Sans', sans-serif;
+  ;
+}
+.container{
+  color: white;
+  background-color: hsl(207, 26%, 17%);
+  min-height: 100vh;
+}
+img{
+  width: 200px;
+  height: 100px;
+}
+.country{
+  overflow: hidden;
+  border-radius: 5px;
+  background-color: hsl(209, 23%, 22%);
+  width: 200px;
+  box-shadow: -5px 5px 10px hsl(210, 30%, 10%);
+
+}
+/* For header */
+.header-component-wrapper{
+  display: flex;
+  width: 865px;
+  justify-content: space-between;
+  position: relative; 
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+header div button{
+  background-color: transparent;
+  border: 0;
+  color: white;
+  font-size: 25px;
+  padding-right: 10px;
+  cursor: pointer;
+}
+header{
+  background-color: hsl(209, 23%, 22%);
+  height: 80px;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.country-info{
+  padding: 10px;
+}
+
+.data-wrapper{ /*Container of country items*/
+  position: relative;
+  width: 865px;
+  left: 50%;
+  transform: translate(-50%);
+}
+.countries-container{
+  display: grid;
+  grid-template-columns: 200px 200px 200px 200px;
+  gap: 40px 20px;
+}
+
+/* The main search container */
+.search-container{ 
+  display: flex;
+  justify-content: space-between;
+}
+#search-input{
+  color: white;
+  height: 40px;
+  width: 300px;
+  background-color: hsl(209, 23%, 22%);
+  border: 0;
+  padding-left: 20px;
+}
+#search-input:focus{
+  outline: none;
+}
+#search-input::placeholder{
+  color: white;
+}
+
+#regions-select{
+  width: 200px;
+  border-radius: 5px;
+  position: relative;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: hsl(209, 23%, 22%);
+  color: white;
+  height: 50px;
+  box-shadow: -5px 5px 10px hsl(210, 30%, 10%);
+  text-align: left;
+  border: 0;
+}
+#regions-select:focus{
+  outline: none;
+}
+
+/* Search bar icon */
+svg{
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+}
+.search-bar{
+  padding: 0px 0px 0px  20px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: hsl(209, 23%, 22%);
+  width: max-content;
+  height: 50px;
+  box-shadow: -5px 5px 10px hsl(210, 30%, 10%);
+  margin-bottom: 50px;
+}
