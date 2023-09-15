@@ -1,22 +1,37 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './App.css';
 import data from './data.json'
 
 function App() {
   const [ darkMode, setDarkMode ] = useState(true)
-  const [input, setInput] = useState('')
+  const [ input, setInput ] = useState('')
   const [ countries, setCountries ] = useState(data)
- 
-  function fetchData(value){
+  const [ filterDropdown, setFilterDropdown ] = useState(false)
+  const [ region, setRegion ] = useState('')
+  const regionRef = useRef()
+
+  
+  document.addEventListener('mousedown', (event)=>{
+    if (regionRef.current && !regionRef.current.contains(event.target)) {
+      setFilterDropdown(false)
+    }
+  })
+
+  function fetchData(){
       const newData = data.filter((country)=>{
-          return country.name.toLowerCase().includes(input.toLowerCase())
+          return (country.name.toLowerCase().includes(input.toLowerCase()) && country.region.includes(region))
+      
       })
       setCountries(newData)
   }
  
   const handleChange = (value) =>{
       setInput(value)
-      fetchData(value)
+      fetchData()
+  }
+  const handleRegionChange = (region) =>{
+    setRegion(region)
+    fetchData()
   }
  
   return (
@@ -48,14 +63,19 @@ function App() {
             </svg>
             <input value={input} onChange={(e) =>  handleChange(e.target.value)} type='search' id='search-input' placeholder='Search for a country...'/>
           </div>
-          <select name="regions" id="regions-select">
-            <option value="select-default" defaultValue={true}>Select a region...</option>
-            <option value="africa">Africa</option>
-            <option value="america">America</option>
-            <option value="asia">Asia</option>
-            <option value="Europe">Europe</option>
-            <option value="Oceania">Oceania</option>
-          </select>
+          <div className='regions-select-container' id='regions-select-container' ref={regionRef}>
+            <div className='regions-bar' onClick={()=>setFilterDropdown(!filterDropdown)}><p>{region}</p></div>
+            <div className={filterDropdown ? 'regions-items' : 'hidden'}>
+              <ul>
+                <li onClick={()=> handleRegionChange('')}>None</li>
+                <li onClick={()=> handleRegionChange('Africa')}>Africa</li>
+                <li onClick={()=> handleRegionChange('Americas')}>America</li>
+                <li onClick={()=> handleRegionChange('Asia')}>Asia</li>
+                <li onClick={()=> handleRegionChange('Europe')}>Europe</li>
+                <li onClick={()=> handleRegionChange('Oceania')}>Oceania</li>
+              </ul>
+            </div>
+          </div>
         </div>
 
         <div className='countries-container'>
