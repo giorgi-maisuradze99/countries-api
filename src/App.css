@@ -87,9 +87,6 @@ header{
 }
 
 /* REGION SELECTION FILTER */
-.regions-select-container{
-
-}
 .regions-bar{
   color: white;
   height: 40px;
@@ -126,8 +123,6 @@ header{
   background-color: hsl(208, 22%, 34%);
 }
 
-.regions-items ul{
-}
 
 /* Search bar icon */
 svg{
